@@ -46,5 +46,31 @@ public class Control {
 		return new ModelAndView("redirect:/");
 	}
 	
+	@RequestMapping(value="/insertar_categoria", method=RequestMethod.GET)
+	public ModelAndView insertarCategoria(){
+		ModelAndView model = new ModelAndView("formularioCategorias");
+		model.addObject("categoria", new Categoria());
+		
+		return model;
+	}
 	
+	@RequestMapping(value="/guardar_categoria", method=RequestMethod.POST)
+	public ModelAndView guardarCategoria(@ModelAttribute Categoria cat) {
+		servicios.insert(cat);
+		
+		ModelAndView model = new ModelAndView("redirect:/");
+		
+		return model;
+	}
+	
+	@RequestMapping(value="/modificar_categoria", method=RequestMethod.GET)
+	public ModelAndView modificarCategoria(HttpServletRequest request){
+		int idCat = Integer.parseInt(request.getParameter("id"));
+		Categoria cat = servicios.read(idCat);
+		
+		ModelAndView model = new ModelAndView("formularioCategorias");
+		model.addObject(cat);
+		
+		return model;
+	}
 }
