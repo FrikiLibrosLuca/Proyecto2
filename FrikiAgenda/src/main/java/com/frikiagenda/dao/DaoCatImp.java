@@ -2,6 +2,7 @@ package com.frikiagenda.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,23 +40,43 @@ public class DaoCatImp implements IDAO {
 			}
 		return null;
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
 	@Override
-	public <T> List<T> read() {
-		// TODO Auto-generated method stub
+	public <T> T read(String nombre) {
+		String hql = "from categoria where nombre=" + nombre;
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		List<Categoria> lista = (List<Categoria>) query.list();
+		
+		if (lista != null && !lista.isEmpty()) {
+			return (T) lista.get(0);
+			}
 		return null;
 	}
 
 	@Override
-	public int update() {
-		// TODO Auto-generated method stub
-		return 0;
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public <T> List<T> read() {
+		List<Categoria> listaCategoria = (List<Categoria>) sessionFactory.getCurrentSession().createCriteria(Categoria.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		return (List<T>)listaCategoria;
 	}
 
 	@Override
-	public int delete() {
-		// TODO Auto-generated method stub
-		return 0;
+	@Transactional
+	public <T> void update(T t) {
+		sessionFactory.getCurrentSession().saveOrUpdate(t);
+		
+	}
+
+	@Override
+	@Transactional
+	public void delete(int id) {
+		Categoria catToDelete = new Categoria();
+		catToDelete.setId(id);
+		sessionFactory.getCurrentSession().delete(catToDelete);
 	}
 
 	@Override

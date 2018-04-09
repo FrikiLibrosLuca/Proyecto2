@@ -1,5 +1,7 @@
 package com.frikiagenda.servicios;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,31 +14,40 @@ public class ServiciosCatImp implements IServicios {
 	
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	public <T> void update(T t) {
+		dao.update(t);
 	}
 
 	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-		
+	public void delete(int id) {
+		dao.delete(id);		
 	}
 
 	@Override
 	public <T> void insert(T t) {
-		// TODO Auto-generated method stub
-		int resu=dao.insert(t);
+		dao.insert(t);
 		
 		
 	}
 
 	@Override
 	public <T> T read(int id) {
-		
 		 return dao.read(id);
 		
 	}
+	
+	@Override
+	public <T> T read(String nombre) {
+		 return dao.read(nombre);
+		
+	}
+
+	@Override
+	public <T> List<T> read() {
+		List<T> lista = dao.read();
+		return lista;
+	}
+	
 
 	
 }

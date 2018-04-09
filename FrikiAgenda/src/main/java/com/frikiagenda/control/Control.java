@@ -30,7 +30,7 @@ public class Control {
 	
 	@RequestMapping(value="/buscar_categoria", method=RequestMethod.GET)
 	public ModelAndView buscarCategoria(@ModelAttribute Categoria cat){
-		Categoria categoria = servicios.read(cat);
+		Categoria categoria = servicios.read(cat.getNombre());
 		
 		ModelAndView model = new ModelAndView("redirect:/");
 		model.addObject(categoria);
