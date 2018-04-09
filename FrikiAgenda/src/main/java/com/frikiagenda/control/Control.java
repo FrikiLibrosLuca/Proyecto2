@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,9 +29,10 @@ public class Control {
 		return model;
 	}
 	
-	@RequestMapping(value="/buscar_categoria", method=RequestMethod.GET)
-	public ModelAndView buscarCategoria(@ModelAttribute Categoria cat){
-		Categoria categoria = servicios.read(cat.getNombre());
+	@RequestMapping(value="/buscar_categoria/{id}", method=RequestMethod.GET)
+	public ModelAndView buscarCategoria(@ModelAttribute Categoria cat,@PathVariable int id){
+		cat.setId(id);
+		Categoria categoria = servicios.read(cat);
 		
 		ModelAndView model = new ModelAndView("redirect:/");
 		model.addObject(categoria);
@@ -38,10 +40,9 @@ public class Control {
 		return model;
 	}
 	
-	@RequestMapping(value="/borrar_categoria", method=RequestMethod.GET)
-	public ModelAndView borrarCategoria(HttpServletRequest request){
-		int idCat = Integer.parseInt(request.getParameter("id"));
-		servicios.delete(idCat);
+	@RequestMapping(value="/borrar_categoria/{id}", method=RequestMethod.GET)
+	public ModelAndView borrarCategoria(HttpServletRequest request,@PathVariable int id){
+		servicios.delete(id);
 		
 		return new ModelAndView("redirect:/");
 	}
@@ -63,10 +64,10 @@ public class Control {
 		return model;
 	}
 	
-	@RequestMapping(value="/modificar_categoria", method=RequestMethod.GET)
-	public ModelAndView modificarCategoria(HttpServletRequest request){
-		int idCat = Integer.parseInt(request.getParameter("id"));
-		Categoria cat = servicios.read(idCat);
+	@RequestMapping(value="/modificar_categoria/{id}", method=RequestMethod.GET)
+	public ModelAndView modificarCategoria(@ModelAttribute Categoria cat,@PathVariable int id){
+		cat.setId(id);
+		cat = servicios.read(cat);
 		
 		ModelAndView model = new ModelAndView("formularioCategorias");
 		model.addObject(cat);

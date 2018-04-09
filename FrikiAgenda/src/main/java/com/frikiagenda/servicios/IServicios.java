@@ -7,7 +7,7 @@ public interface IServicios {
 	public <T> void insert(T t);
 	
 	//read
-	public <T> T read(int id);
+	public <T> T read(T t);
 	public <T> T read(String nombre);
 	public <T> List<T> read();
 	
