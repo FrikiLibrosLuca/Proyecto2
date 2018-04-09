@@ -50,12 +50,12 @@
 				</div>
 				
 				<section>
-				<form action="buscar_categoria" method="get">
-					<select class="form-control" name="campo">
+					<form:form action="buscar_categoria" method="get" modelAttribute="categoria">
+						<select class="form-control" name="campo">
 	  						<option value="categoria">Categoria</option>
 	  						<option value="#">En proceso...</option>
 	  					</select>
-	  					<input type="text" name="nombre" class="form-control" placeholder="Buscar...">
+	  					<form:input path="nombre" type="text"  type="text" class="form-control" placeholder="Buscar..."/>
 	  					<input type="submit" name="submit" value="Buscar">
-  					</form>
+  					</form:form>
 				</section>
