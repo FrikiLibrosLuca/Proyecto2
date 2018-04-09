@@ -1,5 +1,22 @@
 package com.frikiagenda.dao;
 
-public class IDAO {
+import java.util.List;
+
+public interface IDAO {
+	
+	//inserts
+	<T> int insert(T t);
+	
+	//reads
+	<T> T read(int id);
+	<T> List<T> read();
+	
+	//updates
+	int update();
+	
+	//deletes
+	int delete();
+	
+	
 
 }
