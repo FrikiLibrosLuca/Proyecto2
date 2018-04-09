@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-<html lang="e">
+<html lang="es">
 
 <head>
 
@@ -43,91 +43,19 @@
 <body>
 
     <div id="wrapper">
-
-        <!-- Navigation---------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <img class="logo" src="imagenes/logoFriki.png" width="250" height="50" align="middle">
-            </div>
-
-            <!-- MENU SUPERIOR--------------------------------------------------------------------------------------------------------------------- -->
-            <ul class="nav navbar-top-links navbar-right">
-            
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="login.html"><i class="fa fa-user fa-fw"></i> Iniciar sesión</a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
-                        </li>
-                    </ul>
-
-                </li>
-
-            </ul>
-
-            <!-- MENU IZQUIERDO ----------------------------------------------------------------------------------------------------------------- -->
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                    <!-- Lupita buscador -->	
-						<li class="sidebar-search ">
-				            <form action="Servlet" method="get">
-				            <div class="input-group custom-search-form">
-				           		<div class="form-group">
-	                                <label>Buscar por:</label>
-	                                <select class="form-control" name="campo">
-	                                    <option value="autor">Autor</option>
-	                                    <option value="titulo">Titulo</option>
-	                                </select>
-	                            </div>
-	                            <div>
-				                <input type="text" name="valor" class="form-control" placeholder="Buscar...">
-				                   <span class="input-group-btn">
-				                   <input class="botonLupita btn btn-default" type="submit" name="opcion"/>
-				                   <i class="fa fa-search"></i>
-				                  
-				                   </span>
-				                </div>
-				                <input type="hidden" name="opcion" value="busqueda">
-				             </div>
-				             </form>
-				         </li>
-                        <li class="sidebar-search">
-                            <a href="Servlet?opcion=listadoGeneral"> Listado General</a>
-                        </li>
-                        <li class="sidebar-search" id="categoria"> Categorías
-                        </li>
-                        <li>
-                            <a href="Servlet?columna=Terror&opcion=listadoCategoria"><i class="fa fa-github-alt fa-fw"></i> Terror</a>
-                        </li>
-                        <li>
-                            <a href="Servlet?columna=Thriller&opcion=listadoCategoria"><i class="fa fa-github-alt fa-fw"></i> Thriller</a>
-                        </li>
-                        <li>
-                            <a href="Servlet?columna=Dragones&opcion=listadoCategoria"><i class="fa fa-github-alt fa-fw"></i> Dragones</a>
-                        </li>
-                        <li>
-                            <a href="Servlet?columna=Ciencia Ficción&opcion=listadoCategoria"><i class="fa fa-github-alt fa-fw"></i> Ciencia Ficción</a>
-                        </li>
-                        <li>
-                            <a href="Servlet?columna=Fantasía Épica&opcion=listadoCategoria"><i class="fa fa-github-alt fa-fw"></i> Fantasía Épica</a>
-                        </li>
-                        <li>
-                            <a href="Servlet?columna=Romántica&opcion=listadoCategoria"><i class="fa fa-github-alt fa-fw"></i> Romántica</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">FrikiAgenda</h1>
+				</div>
+				
+				<section>
+				<form action="buscar_categoria" method="get">
+					<select class="form-control" name="campo">
+	  						<option value="categoria">Categoria</option>
+	  						<option value="#">En proceso...</option>
+	  					</select>
+	  					<input type="text" name="nombre" class="form-control" placeholder="Buscar...">
+	  					<input type="submit" name="submit" value="Buscar">
+  					</form>
+				</section>
