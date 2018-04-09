@@ -1,17 +1,21 @@
 package com.frikiagenda.servicios;
 
+import java.util.List;
+
 public interface IServicios {
 	//insertar
-	<T> void insert(T t);
+	public <T> void insert(T t);
 	
 	//read
-	<T> T read(int id);
+	public <T> T read(int id);
+	public <T> T read(String nombre);
+	public <T> List<T> read();
 	
 	//update
-	void update();
+	public <T> void update(T t);
 	
 	//delete
-	void delete();
+	public void delete(int id);
 	
 
 }

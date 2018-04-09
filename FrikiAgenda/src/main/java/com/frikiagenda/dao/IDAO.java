@@ -5,17 +5,18 @@ import java.util.List;
 public interface IDAO {
 	
 	//inserts
-	<T> int insert(T t);
+	public <T> int insert(T t);
 	
 	//reads
-	<T> T read(int id);
-	<T> List<T> read();
+	public <T> T read(int id);
+	public <T> T read(String nombre);
+	public <T> List<T> read();
 	
 	//updates
-	int update();
+	public <T>void update(T t);
 	
 	//deletes
-	int delete();
+	public void delete(int id);
 	
 	
 
