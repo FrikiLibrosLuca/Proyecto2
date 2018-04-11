@@ -75,7 +75,11 @@ public class DaoCatImp implements IDAO {
 	@Transactional
 	@SuppressWarnings("unchecked")
 	public <T> List<T> read() {
+		logger.trace("DAO read");
+		
 		List<Categoria> listaCategoria = (List<Categoria>) sessionFactory.getCurrentSession().createCriteria(Categoria.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		
+		logger.debug("Lista Dao" + listaCategoria.toString());
 		return (List<T>)listaCategoria;
 	}
 
