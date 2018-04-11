@@ -6,8 +6,11 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.provider.HibernateUtils;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,6 +33,8 @@ public class DaoCatImp implements IDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	private Session session = sessionFactory.openSession();
+	private Criteria criteria = session.createCriteria(Categoria.class);
 
 	public DaoCatImp() {}
 	
@@ -44,8 +49,16 @@ public class DaoCatImp implements IDAO {
 	@Transactional
 	@Override
 	public <T> T read(int id) {
+		logger.debug("DAO read integer");
+		criteria.add(Restrictions.eq("id", id));
+		Categoria c1 = (Categoria) criteria.uniqueResult();
+		
+		return (T)c1;
+		
+		/* 
+		 * HQL:
 		String hql = "from categoria where idcategorias=" + id;
-		logger.debug("hql "+hql);
+		
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		List<Categoria> lista = (List<Categoria>) query.list();
@@ -54,12 +67,23 @@ public class DaoCatImp implements IDAO {
 			return (T) lista.get(0);
 			}
 		return null;
+		*/
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
 	@Override
 	public <T> T read(String nombre) {
+		
+		logger.debug("DAO read string");
+		
+		criteria.add(Restrictions.eq("nombre", nombre));
+		Categoria c1 = (Categoria) criteria.uniqueResult();
+		
+		return (T)c1;
+		
+		/*
+		 * HQL
 		String hql = "from categoria where nombre=" + nombre;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
@@ -69,18 +93,28 @@ public class DaoCatImp implements IDAO {
 			return (T) lista.get(0);
 			}
 		return null;
+		*/
 	}
 
 	@Override
 	@Transactional
 	@SuppressWarnings("unchecked")
 	public <T> List<T> read() {
+		
+		logger.trace("DAO read");
+		List<Categoria> listaCategoria = (List<Categoria>) criteria.list();
+		return (List<T>)listaCategoria;
+		
+		/*
+		 * HQL:
+		 
 		logger.trace("DAO read");
 		
 		List<Categoria> listaCategoria = (List<Categoria>) sessionFactory.getCurrentSession().createCriteria(Categoria.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		
 		logger.debug("Lista Dao" + listaCategoria.toString());
 		return (List<T>)listaCategoria;
+		*/
 	}
 
 	@Override
