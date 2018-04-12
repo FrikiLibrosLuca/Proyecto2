@@ -41,12 +41,6 @@
 		</div>
 	</div>
 </div>
-<div class="row ">
-	<div class="col-lg-12 ">
-		<div class="panel panel-default">
-			<a href="listaEmp"><button type="button" class="btn btn-primary">Volver</button></a>
-		</div>
-	</div>
-</div>
+
 
 			<%@ include file="footer.html"%>
