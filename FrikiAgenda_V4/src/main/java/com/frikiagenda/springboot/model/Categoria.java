@@ -23,11 +23,11 @@ public class Categoria implements Serializable{
 	@Column(name = "idcategorias")
 	private int id;
 	
-	@Column(name = "nombre")
+	
 	@Size(min=3, max=45)
 	private String nombre;
 	
-	@Column(name = "descripcion")
+	
 	@Size(min=3, max=45)
 	private String descripcion;
 	

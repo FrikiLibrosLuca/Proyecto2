@@ -21,6 +21,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.frikiagenda.springboot.model.Categoria;
 import com.frikiagenda.springboot.servicios.IServicios;
+import com.frikiagenda.springboot.servicios.ServiciosCatImp;
+import com.frikiagenda.springboot.servicios.ServiciosEmpImp;
 import com.frikiagenda.springboot.model.Empleado;
 
 @Controller
@@ -37,8 +39,8 @@ public class Control {
 	}
 
 	@Autowired
-	private IServicios servicios;
-	// private ServiciosCatImp servicios;
+	private ServiciosCatImp servicios;
+	private ServiciosEmpImp servEmp;
 
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String cargaInicial(ModelMap model) {
@@ -120,7 +122,7 @@ public class Control {
 		logger.log(Level.INFO, "Dentro de listaEmp");
 		logger.log(Level.INFO, "listEmp");
 
-		Iterable<Empleado> listaEmpleado = servicios.listar();
+		Iterable<Empleado> listaEmpleado = servEmp.listar();
 		logger.log(Level.INFO, "JSON" + listaEmpleado);
 
 		return listaEmpleado;
@@ -132,7 +134,7 @@ public class Control {
 		logger.log(Level.INFO, "Buscar empleado");
 
 		emp.setIdempleados(idempleados);
-		Empleado empleado = servicios.read(emp);
+		Empleado empleado = servEmp.read(emp);
 
 		model.addAttribute("empleado", empleado);
 
@@ -144,7 +146,7 @@ public class Control {
 	public ModelAndView borrarEmpelado(HttpServletRequest request, @PathVariable int idempleados) {
 		logger.log(Level.INFO, "Borrar empleados");
 
-		servicios.delete(idempleados);
+		servEmp.delete(idempleados);
 
 		return new ModelAndView("redirect:/");
 	}
@@ -163,7 +165,7 @@ public class Control {
 	public ModelAndView guardarEmpleado(@ModelAttribute Empleado emp) {
 		logger.log(Level.INFO, "Guardar empleado");
 
-		servicios.insert(emp);
+		servEmp.insert(emp);
 
 		ModelAndView model = new ModelAndView("redirect:/");
 
@@ -175,7 +177,7 @@ public class Control {
 		logger.log(Level.INFO, "Modificar categoria");
 
 		emp.setIdempleados(idempleado);
-		emp = servicios.read(emp);
+		emp = servEmp.read(emp);
 
 		ModelAndView model = new ModelAndView("formularioCategorias");
 		model.addObject(emp);

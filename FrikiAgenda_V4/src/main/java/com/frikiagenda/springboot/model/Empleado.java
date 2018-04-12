@@ -2,6 +2,7 @@ package com.frikiagenda.springboot.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,27 +33,29 @@ public class Empleado implements Serializable {
 	private String codempleado;
 	
 	private String salario;
-	private Timestamp fechaAlta;
+	
+	@JoinColumn(name="idcategoria")
+	private LocalDateTime fechaalta;
 	
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="idCategoria",referencedColumnName="idcategorias")
+	@JoinColumn(name="idcategoria")
 	private Categoria categoria;
 	
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="idDepartamento",referencedColumnName="iddepartamento")
+	@JoinColumn(name="iddepartamento")
 	private Departamento departamento;
 
 	public Empleado() {
 		super();
 	}
 
-	public Empleado(int idempleados, String codempleado, String salario, Timestamp fechaAlta, Categoria categoria,
+	public Empleado(int idempleados, String codempleado, String salario, LocalDateTime fechaalta, Categoria categoria,
 			Departamento departamento) {
 		super();
 		this.idempleados = idempleados;
 		this.codempleado = codempleado;
 		this.salario = salario;
-		this.fechaAlta = fechaAlta;
+		this.fechaalta = fechaalta;
 		this.categoria = categoria;
 		this.departamento = departamento;
 	}
@@ -81,12 +84,12 @@ public class Empleado implements Serializable {
 		this.salario = salario;
 	}
 
-	public Timestamp getFechaAlta() {
-		return fechaAlta;
+	public LocalDateTime getFechaAlta() {
+		return fechaalta;
 	}
 
-	public void setFechaAlta(Timestamp fechaAlta) {
-		this.fechaAlta = fechaAlta;
+	public void setFechaAlta(LocalDateTime fechaalta) {
+		this.fechaalta = fechaalta;
 	}
 
 	public Categoria getCategoria() {
@@ -108,7 +111,7 @@ public class Empleado implements Serializable {
 	@Override
 	public String toString() {
 		return "Empleado [idempleados=" + idempleados + ", codempleado=" + codempleado + ", salario=" + salario
-				+ ", fechaAlta=" + fechaAlta + ", categoria=" + categoria + ", departamento=" + departamento + "]";
+				+ ", fechaAlta=" + fechaalta + ", categoria=" + categoria + ", departamento=" + departamento + "]";
 	}
 	
 	

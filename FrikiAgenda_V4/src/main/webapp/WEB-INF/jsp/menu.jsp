@@ -66,7 +66,7 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-lg-12">
-										<form:form method="POST" modelAttribute="categoria" class="form-control" action="buscar_categoria/${item.nombre}"/>
+										<form:form method="POST" modelAttribute="categoria" class="form-control" action="buscar_categoria/${item.nombre}">
 											<div class="form-group">
 												<label id="nombre">Buscar por Categoria</label>
 												<form:input type="text" class="form-control" min=3 max=45 path="nombre" id="nombre"/>
@@ -77,25 +77,25 @@
 											<div class="form-group">
 												<form:input type="submit" class="btn btn-default" value="Buscar"/>
 											</div>
-										</form>
+										</form:form>
 									</div>
 									<!-- /.col-lg-6 (nested) -->
 								</div>
 								<!-- /.row (nested) -->
 								<div class="row">
 									<div class="col-lg-12">
-										<form:form method="POST" modelAttribute="categoria" class="form-control" action="buscar_categoria/${item.nombre}"/>
+										<form:form method="POST" modelAttribute="categoria" class="form-control" action="buscar_categoria/${item.nombre}">
 											<div class="form-group">
 												<label id="codempleado">Buscar por código de empleado</label>
 												<form:input type="text" class="form-control" min=3 max=45 path="codempleado" id="codempleado"/>
 											</div>
-											<!-- <div class="has-error">
+											<div class="has-error">
 				                                <form:errors path="nombre" class="help-inline"/>
-				                            </div> -->
+				                            </div> 
 											<div class="form-group">
 												<form:input type="submit" class="btn btn-default" value="Buscar"/>
 											</div>
-										</form>
+										</form:form>
 									</div>
 									<!-- /.col-lg-6 (nested) -->
 								</div>
