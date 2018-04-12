@@ -1,4 +1,4 @@
-<%@ include file="menu.jsp"%>
+<%@ include file="menuB.jsp"%>
 <section>
 			<form:form method="GET" modelAttribute="empleado" class="form-control" action="guardar_Empleado">
 
