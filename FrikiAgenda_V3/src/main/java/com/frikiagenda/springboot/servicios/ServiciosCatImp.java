@@ -27,7 +27,7 @@ public class ServiciosCatImp implements IServicios {
     }
 	
 	@Autowired
-	private IDAO<Categoria> dao;
+	private IDAO dao;
 
 	
 	
