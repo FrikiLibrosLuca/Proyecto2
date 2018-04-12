@@ -106,13 +106,4 @@
                 <!-- /.row -->
                 
                 <!-- ESTE DIV ES PARA INSERTAR CATEGORIA ------------------- -->
-                <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading cuadrado">
-                            <a href="insertar_empleado">Insertar Empleado</a>
-                        </div>                        
-                    </div>
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
+                
