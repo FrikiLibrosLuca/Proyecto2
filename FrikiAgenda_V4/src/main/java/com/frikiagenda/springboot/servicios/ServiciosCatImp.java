@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.frikiagenda.springboot.control.Control;
-import com.frikiagenda.springboot.dao.IDAO;
+import com.frikiagenda.springboot.dao.IDAOCat;
 import com.frikiagenda.springboot.model.Categoria;
 
 @Service
@@ -27,7 +27,7 @@ public class ServiciosCatImp implements IServicios {
     }
 	
 	@Autowired
-	private IDAO dao;
+	private IDAOCat dAOCat;
 
 	
 	
@@ -35,7 +35,7 @@ public class ServiciosCatImp implements IServicios {
 	public <T> int insert(T t) {
 		
 		try{
-		dao.save((Categoria)t);
+		dAOCat.save((Categoria)t);
 		}catch(IllegalArgumentException iae){
 			logger.log(Level.FINE,"No se ha recibido objeto");
 			return 1;
@@ -47,7 +47,7 @@ public class ServiciosCatImp implements IServicios {
 	@Override
 	public <T> int update(T t) {
 		try{
-		dao.save((Categoria)t);
+		dAOCat.save((Categoria)t);
 		}catch(IllegalArgumentException iae){
 			logger.log(Level.FINE,"No se ha recibido objeto");
 			return 1;
@@ -58,7 +58,7 @@ public class ServiciosCatImp implements IServicios {
 	@Override
 	public int delete(int id) {
 		try{
-		dao.delete((long) id);
+		dAOCat.delete((long) id);
 		}catch(IllegalArgumentException iae){
 			logger.log(Level.FINE,"No se ha recibido id");
 			return 1;
@@ -71,7 +71,7 @@ public class ServiciosCatImp implements IServicios {
 		Categoria cat = (Categoria)t;
 	
 		try{
-			cat = dao.findOne((long)cat.getId());
+			cat = dAOCat.findOne((long)cat.getId());
 		}catch(IllegalArgumentException iae){
 			logger.log(Level.FINE,"No se ha recibido id");
 			return null;
@@ -84,7 +84,7 @@ public class ServiciosCatImp implements IServicios {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Iterable<Categoria> listar() {
-		return dao.findAll();
+		return dAOCat.findAll();
 	}
 	
 	
