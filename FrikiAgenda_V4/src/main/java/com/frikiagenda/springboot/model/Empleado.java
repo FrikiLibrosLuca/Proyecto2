@@ -34,7 +34,7 @@ public class Empleado implements Serializable {
 	private String salario;
 	
 	
-	private LocalDateTime fechaalta;
+	private LocalDateTime fechaAlta;
 	
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="idcategoria")
@@ -54,7 +54,7 @@ public class Empleado implements Serializable {
 		this.idempleados = idempleados;
 		this.codempleado = codempleado;
 		this.salario = salario;
-		this.fechaalta = fechaalta;
+		this.fechaAlta = fechaalta;
 		this.categoria = categoria;
 		this.departamento = departamento;
 	}
@@ -84,11 +84,11 @@ public class Empleado implements Serializable {
 	}
 
 	public LocalDateTime getFechaAlta() {
-		return fechaalta;
+		return fechaAlta;
 	}
 
 	public void setFechaAlta(LocalDateTime fechaalta) {
-		this.fechaalta = fechaalta;
+		this.fechaAlta = fechaalta;
 	}
 
 	public Categoria getCategoria() {
@@ -110,7 +110,7 @@ public class Empleado implements Serializable {
 	@Override
 	public String toString() {
 		return "Empleado [idempleados=" + idempleados + ", codempleado=" + codempleado + ", salario=" + salario
-				+ ", fechaAlta=" + fechaalta + ", categoria=" + categoria + ", departamento=" + departamento + "]";
+				+ ", fechaAlta=" + fechaAlta + ", categoria=" + categoria + ", departamento=" + departamento + "]";
 	}
 	
 	

@@ -1,4 +1,4 @@
-<%@ include file="menu.jsp"%>
+<%@ include file="menuB.jsp"%>
 
 <div class="row ">
 	<div class="col-lg-12 ">
@@ -16,7 +16,7 @@
 								<th>Fecha de Alta</th>
 								<th>Categoría</th>
 								<th>Departamento</th>
-								<th></th>
+								
 								<th></th>
 							</tr>
 						</thead>
@@ -27,11 +27,11 @@
 								<td>${item.idempleados}</td>
 								<td>${item.codempleado}</td>
 								<td>${item.salario}</td>
-								<td>${item.fechaalta}</td>
+								<td>${item.fechaAlta}</td>
 								<td>${item.categoria.nombre}</td>
 								<td>${item.departamento.nombre}</td>
-								<td><a href="modificar_empleado/${item.id}"><button type="button" class="btn btn-primary">Modificar</button></a></td>
-								<td><a href="borrar_empleado/${item.id}"><button type="button" class="btn btn-danger">Eliminar</button></a>
+								
+								<td><a href="borrar_empleado/${item.idempleados}"><button type="button" class="btn btn-danger">Eliminar</button></a>
 							</tr>
 						</c:forEach>
 						</tbody>

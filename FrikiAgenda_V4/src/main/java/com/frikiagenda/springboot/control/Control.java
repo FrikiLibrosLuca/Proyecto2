@@ -1,5 +1,6 @@
 package com.frikiagenda.springboot.control;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
@@ -161,16 +162,16 @@ public class Control {
 	public ModelAndView insertarEmpleado() {
 		logger.log(Level.INFO, "Insertar empleado");
 
-		ModelAndView model = new ModelAndView("formularioEmpleados");
+		ModelAndView model = new ModelAndView("formularioEmpleado");
 		model.addObject("empleado", new Empleado());
 
 		return model;
 	}
 
-	@RequestMapping(value = "/guardar_Empleado", method = RequestMethod.POST)
+	@RequestMapping(value = "/guardar_Empleado", method = RequestMethod.GET)
 	public ModelAndView guardarEmpleado(@ModelAttribute Empleado emp) {
 		logger.log(Level.INFO, "Guardar empleado");
-
+		emp.setFechaAlta(LocalDateTime.now());
 		servEmp.insert(emp);
 
 		ModelAndView model = new ModelAndView("redirect:/");
