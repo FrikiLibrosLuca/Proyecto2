@@ -44,7 +44,7 @@
 <div class="row ">
 	<div class="col-lg-12 ">
 		<div class="panel panel-default">
-			<a href="/"><button type="button" class="btn btn-primary">Volver</button></a>
+			<a href="listaEmp"><button type="button" class="btn btn-primary">Volver</button></a>
 		</div>
 	</div>
 </div>
