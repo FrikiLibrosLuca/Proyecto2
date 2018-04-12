@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.frikiagenda.springboot.control.Control;
-import com.frikiagenda.springboot.dao.IDAO;
+import com.frikiagenda.springboot.dao.IDAOCat;
+import com.frikiagenda.springboot.dao.IDAOEmple;
 import com.frikiagenda.springboot.model.Empleado;
 
 @Service
