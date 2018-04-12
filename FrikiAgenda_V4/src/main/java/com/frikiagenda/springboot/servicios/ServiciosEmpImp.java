@@ -63,11 +63,11 @@ public class ServiciosEmpImp implements IServicios{
 		return 0;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Iterable<Empleado> listar() {
-		Empleado emp = new Empleado();
-		emp = (Empleado) daoEmp.findAll();
-		return null;
+		logger.log(Level.FINE,"Dentro de Servicios listar");
+		return daoEmp.findAll();
 	}
 
 	@Override

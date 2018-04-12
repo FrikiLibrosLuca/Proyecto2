@@ -1,7 +1,6 @@
 package com.frikiagenda.springboot.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
@@ -23,7 +22,7 @@ public class Empleado implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

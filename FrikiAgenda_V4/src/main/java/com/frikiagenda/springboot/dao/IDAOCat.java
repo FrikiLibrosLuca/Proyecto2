@@ -1,8 +1,5 @@
 package com.frikiagenda.springboot.dao;
 
-import java.io.Serializable;
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 
 import com.frikiagenda.springboot.model.Categoria;

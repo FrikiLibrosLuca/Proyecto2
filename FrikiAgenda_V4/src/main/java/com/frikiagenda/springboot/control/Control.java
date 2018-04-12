@@ -40,6 +40,7 @@ public class Control {
 	
 	@Autowired
 	private ServiciosCatImp servicios;
+	@Autowired
 	private ServiciosEmpImp servEmp;
 
 	@RequestMapping(value="/", method = RequestMethod.GET)
@@ -123,7 +124,12 @@ public class Control {
 		logger.log(Level.INFO, "listEmp");
 
 		Iterable<Empleado> listaEmpleado = servEmp.listar();
+		
+		logger.log(Level.INFO, "LISTA DE EMPLEADOS" + listaEmpleado.toString());
+		
 		model.addAttribute("listaEmpleado", listaEmpleado);
+		
+		
 
 		return "portadaB";
 
