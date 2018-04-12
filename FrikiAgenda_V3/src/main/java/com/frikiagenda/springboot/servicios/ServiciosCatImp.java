@@ -27,22 +27,64 @@ public class ServiciosCatImp implements IServicios {
     }
 	
 	@Autowired
-	private IDAO dao;
+	private IDAO<Categoria> dao;
 
+	
+	
 	@Override
-	public <T> void update(T t) {
-		//dao.update(t);
+	public <T> int insert(T t) {
+		
+		try{
+		dao.save((Categoria)t);
+		}catch(IllegalArgumentException iae){
+			logger.log(Level.FINE,"No se ha recibido objeto");
+			return 1;
+		}
+		return 0;
+
+	}
+	
+	@Override
+	public <T> int update(T t) {
+		try{
+		dao.save((Categoria)t);
+		}catch(IllegalArgumentException iae){
+			logger.log(Level.FINE,"No se ha recibido objeto");
+			return 1;
+		}
+		return 0;
 	}
 
 	@Override
-	public void delete(int id) {
-		//dao.delete(id);
+	public int delete(int id) {
+		try{
+		dao.delete((long) id);
+		}catch(IllegalArgumentException iae){
+			logger.log(Level.FINE,"No se ha recibido id");
+			return 1;
+		}
+		return 0;
 	}
 
 	@Override
-	public <T> void insert(T t) {
-		//dao.insert(t);
+	public <T> T read(T t) {
+		Categoria cat = (Categoria)t;
+	
+		try{
+			cat = dao.findOne((long)cat.getId());
+		}catch(IllegalArgumentException iae){
+			logger.log(Level.FINE,"No se ha recibido id");
+			return null;
+		}	
+		
+		return (T)cat;
+	}
 
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Iterable<Categoria> listar() {
+		return dao.findAll();
 	}
 	
 	
@@ -60,7 +102,7 @@ public class ServiciosCatImp implements IServicios {
 
 	}
 */
-	
+	/*
 	@Override
 	public <T> List<T> read() {
 		logger.log(Level.INFO,"Servicios read ida");
@@ -74,24 +116,8 @@ public class ServiciosCatImp implements IServicios {
 		
 		return lista;
 	
-	}
+	}*/
 
-	@Override
-	public <T> T read(T t) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public <T> T read(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Iterable<Categoria> listar() {
-		// TODO Auto-generated method stub
-		return dao.findAll();
-	}
 
 }

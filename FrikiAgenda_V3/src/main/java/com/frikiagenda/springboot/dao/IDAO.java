@@ -10,7 +10,8 @@ import com.frikiagenda.springboot.model.Categoria;
 
  
 
-public interface IDAO extends CrudRepository<Categoria, Long>{
+public interface  IDAO <T> extends CrudRepository<T, Long>{
+
 	/*
 	//inserts
 	public <T> int insert(T t);
