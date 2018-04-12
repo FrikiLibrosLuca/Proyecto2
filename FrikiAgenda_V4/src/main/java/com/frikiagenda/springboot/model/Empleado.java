@@ -33,7 +33,7 @@ public class Empleado implements Serializable {
 	
 	private String salario;
 	
-	@JoinColumn(name="idcategoria")
+	
 	private LocalDateTime fechaalta;
 	
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
