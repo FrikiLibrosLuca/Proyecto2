@@ -32,6 +32,11 @@
                         <input type="submit" value="Guardar" class="btn btn-primary btn-sm">
                     </div>
                 </div>
+                <div class="row">
+                    <div class="form-actions floatRight">
+                        <a href="/"><button type="button" class="btn btn-primary btn-sm">Volver</button></a>
+                    </div>
+                </div>
             </form:form>
 		</section>
 
