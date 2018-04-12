@@ -47,23 +47,10 @@ public class Control {
 		
 		Iterable<Categoria> listaCategoria = servicios.listar();
 		logger.log(Level.INFO, "JSON" + listaCategoria);
-
-		return "plantillaHTML";
+		model.addAttribute("listaCategoria", listaCategoria);
+		return "portada";
 	}
 
-	////////////////////////////////////////// Control-Categoria\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-	/*@RequestMapping(value = "/listaCat", method = RequestMethod.GET)
-	public Object cargarLista() {
-		logger.log(Level.INFO, "Dentro de listaCat");
-		logger.log(Level.INFO, "listCat");
-
-		Iterable<Categoria> listaCategoria = servicios.listar();
-		logger.log(Level.INFO, "JSON" + (String) this.jsonator(listaCategoria));
-
-		return this.jsonator(listaCategoria);
-
-	}*/
 
 	
 
