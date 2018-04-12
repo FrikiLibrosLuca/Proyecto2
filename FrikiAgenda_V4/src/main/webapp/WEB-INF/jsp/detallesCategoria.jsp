@@ -14,7 +14,6 @@
 								<th>Nombre</th>
 								<th>Descripción</th>
 								<th></th>
-								<th></th>
 							</tr>
 						</thead>
 						<!-- en el tbody modificaremos la lista -->
@@ -23,8 +22,6 @@
 								<td>${categoria.id}</td>
 								<td>${categoria.nombre}</td>
 								<td>${categoria.descripcion}</td>
-								<td><a href="buscar_categoria/${categoria.id}"><button
-											type="button" class="btn btn-primary">Modificar</button></a></td>
 								<td><a href="borrar_categoria/${categoria.id}"><button
 											type="button" class="btn btn-danger">Eliminar</button></a>
 							</tr>
