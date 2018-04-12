@@ -1,13 +1,11 @@
 package com.frikiagenda.springboot.servicios;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.frikiagenda.springboot.control.Control;
 import com.frikiagenda.springboot.dao.IDAO;
 import com.frikiagenda.springboot.model.Categoria;
@@ -26,6 +24,7 @@ public class ServiciosCatImp implements IServicios {
         }
     }
 	
+    
 	@Autowired
 	private IDAO dao;
 
@@ -41,7 +40,7 @@ public class ServiciosCatImp implements IServicios {
 			return 1;
 		}
 		return 0;
-
+		
 	}
 	
 	@Override
@@ -86,37 +85,6 @@ public class ServiciosCatImp implements IServicios {
 	public Iterable<Categoria> listar() {
 		return dao.findAll();
 	}
-	
-	
-/*
-	@Override
-	public <T> T read(T item) {
-		
-		return dao.read(((Categoria) item).getId());
-		
-	}
-
-	@Override
-	public <T> T read(String nombre) {
-		return dao.read(nombre);
-
-	}
-*/
-	/*
-	@Override
-	public <T> List<T> read() {
-		logger.log(Level.INFO,"Servicios read ida");
-		
-		//List<T> lista = dao.read();
-		
-		@SuppressWarnings("unchecked")
-		List<T> lista = (List<T>) dao.findAll();
-		
-		logger.log(Level.INFO,"Servicios read bu");
-		
-		return lista;
-	
-	}*/
 
 
 
