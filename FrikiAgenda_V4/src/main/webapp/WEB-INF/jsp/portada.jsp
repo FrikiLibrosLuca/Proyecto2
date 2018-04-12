@@ -1,41 +1,41 @@
 
 <%@ include file="menu.jsp"%>
 
-
-
-
-		<section>
-			<table>
-				<tr>
-					<th>ID</th>
-					<th>Nombre</th>
-					<th>MostrarDetalles</th>
-					<th>Borrar</th>
-
-				</tr>
-				<c:forEach var="item" items="${listaCategoria}">
-					<tr>
-						<td>${item.id}</td>
-						<td>${item.nombre}</td>
-						<td>
-						<a href="buscar_categoria/${item.id}">Mostrar detalles</a>
-						
-						</td>
-						<td>
-						<a href="borrar_categoria/${item.id}">Eliminar entrada</a>	
-									<button type="button" class="btn btn-primary"
-										class="botonModificar">Borrar</button>	
-					
-						</td>
-
-					</tr>
-
-
-				</c:forEach>
-			</table>
-		</section>
+<div class="row ">
+	<div class="col-lg-12 ">
+		<div class="panel panel-default">
+			<div class="panel-heading cuadrado">Categorías</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Descripción</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<!-- en el tbody modificaremos la lista -->
+						<tbody>
+						<c:forEach var="item" items="${listaCategoria}">
+							<tr>
+								<td>${item.id}</td>
+								<td>${item.nombre}</td>
+								<td>${item.descripcion}</td>
+								<td><a href="buscar_categoria/${item.id}"><button type="button" class="btn btn-primary">Modificar</button></a></td>
+								<td><a href="borrar_categoria/${item.id}"><button type="button" class="btn btn-danger">Eliminar</button></a>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
 
-<%@ include file="footer.html"%>
+			<%@ include file="footer.html"%>

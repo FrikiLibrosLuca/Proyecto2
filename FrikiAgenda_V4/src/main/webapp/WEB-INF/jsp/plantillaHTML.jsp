@@ -108,7 +108,7 @@
                 </div>
                 <!-- /.col-lg-4 -->
             </div>
-                
+                <!-- HASTA AQUI EL MENU -->
                 <!-- ESTO ES EL LA LISTA DE CATEGORIAS ESCRIBIR CON AJAX -->
                 <div class="row ">
                     <div class="col-lg-12 ">
