@@ -3,6 +3,14 @@
 	<section>
 			<form:form method="GET" modelAttribute="categoria" class="form-control" action="guardar_categoria">
 
+				<div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3 control-label" for="nombre">ID</label>
+                        <div class="col-md-7">
+                            <form:input type="text" path="id" class="form-control" disabled="true"/>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-label" for="nombre">Nombre (*)</label>

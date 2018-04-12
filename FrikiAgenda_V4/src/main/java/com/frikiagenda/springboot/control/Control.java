@@ -37,13 +37,13 @@ public class Control {
 			System.out.println("Don't work");
 		}
 	}
-
+	
 	@Autowired
 	private ServiciosCatImp servicios;
 	private ServiciosEmpImp servEmp;
 
 	@RequestMapping(value="/", method = RequestMethod.GET)
-	public String cargaInicial(ModelMap model) {
+	public String cargaInicial(ModelMap model, @ModelAttribute Categoria cat) {
 		logger.log(Level.INFO, "Pantalla inicial");
 		logger.log(Level.INFO, "listCat");
 		
@@ -87,7 +87,7 @@ public class Control {
 		return model;
 	}
 
-	@RequestMapping(value = "/guardar_categoria", method = RequestMethod.POST)
+	@RequestMapping(value = "/guardar_categoria", method = RequestMethod.GET)
 	public ModelAndView guardarCategoria(@ModelAttribute Categoria cat) {
 		logger.log(Level.INFO, "Guardar categoria");
 
@@ -105,7 +105,7 @@ public class Control {
 		cat.setId(id);
 		cat = servicios.read(cat);
 
-		ModelAndView model = new ModelAndView("formularioCategorias");
+		ModelAndView model = new ModelAndView("modificarCateg");
 		model.addObject(cat);
 
 		return model;
@@ -118,14 +118,14 @@ public class Control {
 	
 
 	@RequestMapping(value = "/listaEmp", method = RequestMethod.GET)
-	public Object cargarListaEmp1() {
+	public String cargarListaEmp1(ModelMap model, @ModelAttribute Empleado emp) {
 		logger.log(Level.INFO, "Dentro de listaEmp");
 		logger.log(Level.INFO, "listEmp");
 
 		Iterable<Empleado> listaEmpleado = servEmp.listar();
-		logger.log(Level.INFO, "JSON" + listaEmpleado);
+		model.addAttribute("listaEmpleado", listaEmpleado);
 
-		return listaEmpleado;
+		return "portadaB";
 
 	}
 

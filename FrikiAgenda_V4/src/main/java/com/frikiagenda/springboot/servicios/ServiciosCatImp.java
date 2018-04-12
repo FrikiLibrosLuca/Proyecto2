@@ -71,7 +71,7 @@ public class ServiciosCatImp implements IServicios {
 		Categoria cat = (Categoria)t;
 	
 		try{
-			cat = dAOCat.findOne((long)cat.getId());
+			cat = dAOCat.findOne(cat.getId());
 		}catch(IllegalArgumentException iae){
 			logger.log(Level.FINE,"No se ha recibido id");
 			return null;

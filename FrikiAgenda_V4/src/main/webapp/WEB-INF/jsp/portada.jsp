@@ -25,7 +25,7 @@
 								<td>${item.id}</td>
 								<td>${item.nombre}</td>
 								<td>${item.descripcion}</td>
-								<td><a href="buscar_categoria/${item.id}"><button type="button" class="btn btn-primary">Modificar</button></a></td>
+								<td><a href="modificar_categoria/${item.id}"><button type="button" class="btn btn-primary">Modificar</button></a></td>
 								<td><a href="borrar_categoria/${item.id}"><button type="button" class="btn btn-danger">Eliminar</button></a>
 							</tr>
 						</c:forEach>
